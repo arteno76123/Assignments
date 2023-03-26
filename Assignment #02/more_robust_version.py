@@ -26,10 +26,11 @@ try:
     
     # display the students
     question_pos = 0
+    
     with open("output_questions.txt", "w", encoding = "utf-8") as output_file:
         for i in range(students):
             question = question_list.pop(-question_pos)
-            print(f"{i:3}. student: {student_list[i]:3}, question: {question: 3}")
+            print(f"{i+1:3}. student: {student_list[i]:3}, question: {question: 3}")
             output_file.write(f"{i:3}. student: {student_list[i]:3}, question: {question: 3}\n")
             
             # this calculation should keep alternating between 0  and 1 - with the minus in the pop() it should work
@@ -37,3 +38,5 @@ try:
     
 except ValueError:
     print("You have entered a non-integer value. The program is about to stop ...")
+except FileNotFoundError:
+    print("The output file cannot be opened.")
